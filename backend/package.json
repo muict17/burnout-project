@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon -L --exec 'ts-node' src/index.ts",
-    "build": "tsc ",
-    "test": "jest --forceExit --detectOpenHandles --runInBand"
+    "build": "tsc "
   },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
