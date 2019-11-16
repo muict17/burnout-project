@@ -23,18 +23,18 @@ export default {
   schema,
   handler: async (req, res) => {
     try {
-      // const { isValid } = await req.jwt.verify(req.headers.authorization);
-      // if (isValid) {
-      req.multipart(handler, function(err) {
-        if (err) throw new Error(err);
-        res.code(200).send({
-          msg: "uploaded",
-          path: `${process.env.IMG_PATH}/${fileName}`
+      const { isValid } = await req.jwt.verify(req.headers.authorization);
+      if (isValid) {
+        req.multipart(handler, function(err) {
+          if (err) throw new Error(err);
+          res.code(200).send({
+            msg: "uploaded",
+            path: `${process.env.IMG_PATH}/${fileName}`
+          });
+          fileName = "";
         });
-        fileName = "";
-      });
-      // }
-      // res.status(403).send({ msg: "Operation not permitted" });
+      }
+      res.status(403).send({ msg: "Operation not permitted" });
     } catch (e) {
       req.logger.error(e);
       res.status(500).send({ msg: "Service Unavailable" });
