@@ -8,8 +8,8 @@ import * as staticFile from "fastify-static";
 import * as path from "path";
 import jwt from "./jwt";
 import logger from "./logger";
-import db from "./db";
-// import routes from "./routes";
+import mongo from "./db";
+import routes from "./routes";
 import * as socketIO from "socket.io";
 const server: fastify.FastifyInstance<
   Server,
@@ -28,15 +28,15 @@ io.on("connection", function(socket) {
 });
 export default async () => {
   try {
-    const dbDriver = await db;
-    console.log(dbDriver);
+    const dbDriver = await mongo;
+    const db = dbDriver.db("burnout");
     server
       .register(helmet, { hidePoweredBy: { setTo: "PHP 4.2.0" } })
       .register(compress, { global: false })
       .register(cors)
       .decorateRequest("logger", logger)
       .decorateRequest("jwt", jwt)
-      // .decorateRequest("db", db)
+      .decorateRequest("db", db)
       .decorateRequest("io", io)
       .register(staticFile, {
         root: path.join(__dirname, "../images"),
@@ -47,17 +47,17 @@ export default async () => {
     logger.error(e);
   }
 
-  // routes.forEach(route => {
-  //   if (route.method === "POST") {
-  //     server.post(`/v1${route.url}`, { schema: route.schema }, route.handler);
-  //   } else if (route.method === "GET") {
-  //     server.get(`/v1${route.url}`, { schema: route.schema }, route.handler);
-  //   } else if (route.method === "PATCH") {
-  //     server.patch(`/v1${route.url}`, { schema: route.schema }, route.handler);
-  //   } else if (route.method === "DELETE") {
-  //     server.delete(`/v1${route.url}`, { schema: route.schema }, route.handler);
-  //   }
-  // });
+  routes.forEach(route => {
+    if (route.method === "POST") {
+      server.post(`/v1${route.url}`, { schema: route.schema }, route.handler);
+    } else if (route.method === "GET") {
+      server.get(`/v1${route.url}`, { schema: route.schema }, route.handler);
+    } else if (route.method === "PATCH") {
+      server.patch(`/v1${route.url}`, { schema: route.schema }, route.handler);
+    } else if (route.method === "DELETE") {
+      server.delete(`/v1${route.url}`, { schema: route.schema }, route.handler);
+    }
+  });
 
   server.listen(3000, "0.0.0.0", (err: Error, address) => {
     if (err) throw err;
