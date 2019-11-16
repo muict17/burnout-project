@@ -1,4 +1,4 @@
 import registerService from "./authentication/register";
 import loginService from "./authentication/login";
-
-export default [registerService, loginService];
+import uploadService from "./upload";
+export default [registerService, loginService, uploadService];
