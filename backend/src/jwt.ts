@@ -3,7 +3,7 @@ import * as jwt from "jsonwebtoken";
 require("dotenv").config();
 
 export default {
-  sign: (payload): Promise<string> =>
+  sign: (payload: Object): Promise<string> =>
     new Promise((resolve, reject) => {
       jwt.sign(
         {
@@ -17,7 +17,7 @@ export default {
         }
       );
     }),
-  verify: async (authorization: string) => {
+  verify: (authorization: string) => {
     try {
       if (authorization) {
         const token = authorization.replace("Bearer ", "");
