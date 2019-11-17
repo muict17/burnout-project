@@ -3,6 +3,7 @@ require("dotenv").config();
 export default {
   client: MongoClient.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     auth: {
       user: process.env.MONGO_USER,
       password: process.env.MONGO_PASSWORD
