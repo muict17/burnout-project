@@ -29,7 +29,7 @@ io.on("connection", function(socket) {
 });
 export default async () => {
   try {
-    const dbDriver = await mongo;
+    const dbDriver = await mongo.client;
     const db = dbDriver.db("burnout");
     server
       .register(helmet, { hidePoweredBy: { setTo: "PHP 4.2.0" } })
@@ -43,6 +43,7 @@ export default async () => {
         root: path.join(__dirname, "../images"),
         prefix: "/public/"
       })
+      .decorateRequest("mongoPrimaryKey", mongo.objectId)
       .register(urlData)
       .register(multipart);
   } catch (e) {
