@@ -11,6 +11,7 @@ import logger from "./logger";
 import mongo from "./db";
 import routes from "./routes";
 import * as socketIO from "socket.io";
+import * as urlData from "fastify-url-data";
 const server: fastify.FastifyInstance<
   Server,
   IncomingMessage,
@@ -42,21 +43,13 @@ export default async () => {
         root: path.join(__dirname, "../images"),
         prefix: "/public/"
       })
+      .register(urlData)
       .register(multipart);
   } catch (e) {
     logger.error(e);
   }
-
-  routes.forEach(route => {
-    if (route.method === "POST") {
-      server.post(`/v1${route.url}`, { schema: route.schema }, route.handler);
-    } else if (route.method === "GET") {
-      server.get(`/v1${route.url}`, { schema: route.schema }, route.handler);
-    } else if (route.method === "PATCH") {
-      server.patch(`/v1${route.url}`, { schema: route.schema }, route.handler);
-    } else if (route.method === "DELETE") {
-      server.delete(`/v1${route.url}`, { schema: route.schema }, route.handler);
-    }
+  routes.forEach((route: any) => {
+    server.route(route);
   });
 
   server.listen(3000, "0.0.0.0", (err: Error, address) => {
