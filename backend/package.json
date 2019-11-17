@@ -21,6 +21,7 @@
     "fastify-helmet": "^3.0.2",
     "fastify-multipart": "^1.0.2",
     "fastify-static": "^2.5.0",
+    "fastify-url-data": "^2.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.4",
     "pino": "^5.13.6",

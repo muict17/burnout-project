@@ -6,7 +6,7 @@ export default {
   method: "POST",
   schema,
   handler: async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, role, balance } = req.body;
     try {
       const data = await req.db.collection("users").findOne({
         username
@@ -17,6 +17,8 @@ export default {
         const info = await req.db.collection("users").insertOne({
           username,
           password: hashPassword,
+          role,
+          balance,
           createAt: new Date(),
           updateAt: new Date()
         });
@@ -29,7 +31,8 @@ export default {
             username,
             createAt: info.ops[0].createAt,
             updateAt: info.ops[0].updateAt,
-            userId: info.ops[0]._id
+            userId: info.ops[0]._id,
+            permission: info.ops[0].permission
           }
         });
       }

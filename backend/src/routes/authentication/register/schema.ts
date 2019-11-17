@@ -7,6 +7,15 @@ export default {
       },
       password: {
         type: "string"
+      },
+      role: {
+        type: "string",
+        enum: ["user", "admin"],
+        default: "user"
+      },
+      balance: {
+        type: "number",
+        default: 0
       }
     },
     required: ["username", "password"]

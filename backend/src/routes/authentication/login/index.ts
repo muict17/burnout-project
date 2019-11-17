@@ -17,7 +17,10 @@ export default {
           checkUserInfo.password
         );
         if (checkPassword) {
-          const token = await jwt.sign({ userId: checkUserInfo._id });
+          const token = await jwt.sign({
+            userId: checkUserInfo._id,
+            role: checkUserInfo.role
+          });
           req.logger.trace(`${token} is generated`);
           res.send({ token });
         }
