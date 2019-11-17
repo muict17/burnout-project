@@ -1,13 +1,11 @@
 import schema from "./schema";
-import authenticate from "../../../utils/authentication/check-token";
-import verifyAdmin from "../../../utils/authentication/verify-admin";
 export default {
   url: "/movies",
   method: "POST",
   schema,
-  preValidation: function(req, res, done) {
-    authenticate(req, res);
-    verifyAdmin(req, res, "admin");
+  preHandler: function(req, res, done) {
+    req.authenticate(req, res);
+    req.verifyAdmin(req, res, "admin");
     done();
   },
   handler: async (req, res) => {

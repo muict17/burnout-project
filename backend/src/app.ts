@@ -12,6 +12,8 @@ import mongo from "./db";
 import routes from "./routes";
 import * as socketIO from "socket.io";
 import * as urlData from "fastify-url-data";
+import authenticateDecorate from "./utils/authentication/check-token";
+import verifyAdminDecorate from "./utils/authentication/verify-admin";
 const server: fastify.FastifyInstance<
   Server,
   IncomingMessage,
@@ -45,7 +47,9 @@ export default async () => {
       })
       .decorateRequest("mongoPrimaryKey", mongo.objectId)
       .register(urlData)
-      .register(multipart);
+      .register(multipart)
+      .decorateRequest("authenticate", authenticateDecorate)
+      .decorateRequest("verifyAdmin", verifyAdminDecorate);
   } catch (e) {
     logger.error(e);
   }
