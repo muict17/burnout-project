@@ -19,17 +19,17 @@ export default {
         })
       ]);
       if (movieInfo !== null) {
-        const checkSeats = seatPositions.every((seat: string) =>
+        const checkSeats = seatPositions.some((seat: string) =>
           movieInfo.seatsBooking.includes(seat)
         );
-        const totalPrice = seatPositions.length * movieInfo.price;
-        if (totalPrice > userInfo.balance) {
-          res.status(400).send({
-            msg: "balance is not enough"
-          });
-          return;
-        }
         if (!checkSeats) {
+          const totalPrice = seatPositions.length * movieInfo.price;
+          if (totalPrice > userInfo.balance) {
+            res.status(400).send({
+              msg: "balance is not enough"
+            });
+            return;
+          }
           const createSeats = await Promise.all(
             seatPositions.map(seat =>
               req.db.collection("seats").insertOne({
