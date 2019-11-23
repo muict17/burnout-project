@@ -12,16 +12,21 @@ export default {
   handler: async (req, res) => {
     try {
       const { userId, amount } = req.body;
-      const updateUserBalance = await req.db.collection("users").updateOne(
-        {
-          _id: req.mongoPrimaryKey(userId)
-        },
-        {
-          $inc: {
-            balance: amount
+      const [updateUserBalance] = await Promise.all([
+        req.db.collection("users").updateOne(
+          {
+            _id: req.mongoPrimaryKey(userId)
+          },
+          {
+            $inc: {
+              balance: amount
+            }
           }
-        }
-      );
+        ),
+        req.db
+          .collection("payments")
+          .insertOne({ userId, amount, createAt: new Date() })
+      ]);
       if (updateUserBalance.modifiedCount !== 0) {
         res.send({
           msg: "deposited",
