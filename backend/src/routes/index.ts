@@ -8,7 +8,10 @@ import updateByIdService from "./movies/update";
 import getByQueryService from "./movies/get-query";
 import depositService from "./payments/deposit";
 import paymentByQueryService from "./payments/get-query";
+import purchaseTicketService from "./purchase/create";
+
 export default [
+  purchaseTicketService,
   depositService,
   paymentByQueryService,
   getByQueryService,
