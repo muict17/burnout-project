@@ -7,9 +7,10 @@ import deleteMovieByIdService from "./movies/delete";
 import updateByIdService from "./movies/update";
 import getByQueryService from "./movies/get-query";
 import depositService from "./payments/deposit";
-
+import paymentByQueryService from "./payments/get-query";
 export default [
   depositService,
+  paymentByQueryService,
   getByQueryService,
   deleteMovieByIdService,
   updateByIdService,
