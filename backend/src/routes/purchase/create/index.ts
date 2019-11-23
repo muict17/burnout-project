@@ -1,6 +1,6 @@
 import schema from "./schema";
 export default {
-  url: "/purchase",
+  url: "/purchases",
   method: "POST",
   schema,
   preHandler: (req, res, done) => {
@@ -33,8 +33,10 @@ export default {
           const createSeats = await Promise.all(
             seatPositions.map(seat =>
               req.db.collection("seats").insertOne({
-                userId: req.userInfo.userId,
+                userId: req.mongoPrimaryKey(req.userInfo.userId),
+                movieId: req.mongoPrimaryKey(movieId),
                 seatPosition: seat,
+                isUsed: false,
                 createAt: new Date()
               })
             )
