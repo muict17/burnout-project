@@ -9,8 +9,9 @@ import getByQueryService from "./movies/get-query";
 import depositService from "./payments/deposit";
 import paymentByQueryService from "./payments/get-query";
 import purchaseTicketService from "./purchase/create";
-
+import purchaseHistoryService from "./purchase/get-query";
 export default [
+  purchaseHistoryService,
   purchaseTicketService,
   depositService,
   paymentByQueryService,
