@@ -22,7 +22,7 @@ export default {
       if (authorization) {
         const token = authorization.replace("Bearer ", "");
         jwt.verify(token, process.env.JWT_SECRET);
-        const userInfo: Object = jwt.decode(token);
+        const userInfo: any = jwt.decode(token);
         return { isValid: true, ...userInfo };
       }
     } catch (e) {

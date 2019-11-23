@@ -12,8 +12,9 @@ import mongo from "./db";
 import routes from "./routes";
 import * as socketIO from "socket.io";
 import * as urlData from "fastify-url-data";
-import authenticateDecorate from "./utils/authentication/check-token";
+import authenticateDecorate from "./utils/authentication/verify-token";
 import verifyAdminDecorate from "./utils/authentication/verify-admin";
+import verifyOwnerDecorate from "./utils/authentication/verify-owner";
 const server: fastify.FastifyInstance<
   Server,
   IncomingMessage,
@@ -49,7 +50,8 @@ export default async () => {
       .register(urlData)
       .register(multipart)
       .decorateRequest("authenticate", authenticateDecorate)
-      .decorateRequest("verifyAdmin", verifyAdminDecorate);
+      .decorateRequest("verifyAdmin", verifyAdminDecorate)
+      .decorateRequest("verifyOwner", verifyOwnerDecorate);
   } catch (e) {
     logger.error(e);
   }
