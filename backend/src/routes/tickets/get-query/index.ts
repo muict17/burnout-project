@@ -1,6 +1,6 @@
 import schema from "./schema";
 export default {
-  url: "/purchases",
+  url: "/tickets",
   method: "GET",
   schema,
   preHandler: (req, res, done) => {
@@ -10,7 +10,7 @@ export default {
   handler: async (req, res) => {
     try {
       const result = await req.db
-        .collection("seats")
+        .collection("tickets")
         .aggregate([
           {
             $match: {
@@ -40,7 +40,7 @@ export default {
           }
         ])
         .toArray();
-      res.send(result);
+      res.send({ list: result });
     } catch (e) {
       req.logger.error(e);
       res.status(500).send({ msg: "Service Unavailable" });
