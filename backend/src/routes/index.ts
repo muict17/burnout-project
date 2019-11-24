@@ -8,14 +8,16 @@ import updateByIdService from "./movies/update";
 import getByQueryService from "./movies/get-query";
 import depositService from "./payments/deposit";
 import paymentByQueryService from "./payments/get-query";
-import purchaseTicketService from "./tickets/create";
-import purchaseHistoryService from "./tickets/get-query";
-import purchaseUpdateService from "./tickets/update";
+import ticketCreateService from "./tickets/create";
+import ticketByQueryService from "./tickets/get-query";
+import ticketUpdateService from "./tickets/update";
+import ticketByIdService from "./tickets/get-id";
 
 export default [
-  purchaseUpdateService,
-  purchaseHistoryService,
-  purchaseTicketService,
+  ticketByIdService,
+  ticketCreateService,
+  ticketByQueryService,
+  ticketUpdateService,
   depositService,
   paymentByQueryService,
   getByQueryService,
