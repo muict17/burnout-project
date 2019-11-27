@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <div class="container">
-      <p class="has-text-centered is-size-1">Election System</p>
+  <div class="columns">
+    <div class="column">
+      <div class="bg-triangle"></div>
+      <h1 class="brand-title">
+        MUICT<br />
+        MOVIE <br />
+        TICKET
+      </h1>
     </div>
-    <div class="container input-container is-vcentered">
+    <div class="column">
       <div class="field">
-        <label class="label">Username</label>
         <div class="control has-icons-left">
           <input
             class="input"
@@ -19,7 +23,6 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">Password</label>
         <div class="control has-icons-left">
           <input
             class="input"
@@ -32,20 +35,29 @@
           </span>
         </div>
       </div>
-      <div class="container">
-        <div class="columns">
-          <div class="column is-gapless">
-            <button class="button is-link">Login</button>
-          </div>
-          <div class="column is-gapless">
-            <a href="#"><p style="margin-top: 10px;">Register</p></a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 <style>
+.column {
+  min-height: calc(100% - 20px);
+}
+.bg-triangle {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  background-color: #2f80ed;
+  height: 98vh;
+}
+.brand-title {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15%;
+  margin-left: 5%;
+  left: 0;
+  font-size: 64px;
+  font-weight: bold;
+  color: black;
+}
 .input-container {
   margin-left: auto;
   margin-right: auto;
