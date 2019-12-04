@@ -15,7 +15,8 @@ export default {
         .skip(Number(req.query.skip))
         .toArray();
       res.send({ list: result });
-    } else if (req.query.startDate && req.query.endDate) {
+    }
+    if (req.query.startDate && req.query.endDate) {
       const result = await req.db
         .collection("movies")
         .find({
