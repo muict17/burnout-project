@@ -22,7 +22,11 @@ export default {
             role: checkUserInfo.role
           });
           req.logger.trace(`${token} is generated`);
-          res.send({ token });
+          res.send({
+            token,
+            balance: checkUserInfo.balance,
+            username: checkUserInfo.username
+          });
         }
         res.status(401).send({ msg: "password incorrect" });
       }

@@ -23,14 +23,20 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item">{{ username }} / {{ coin }} point</div>
-        <div class="navbar-item"><a href="#">Logout</a></div>
+        <div class="navbar-item"><a href="#" @click="logout">Logout</a></div>
       </div>
     </div>
   </nav>
 </template>
 <script>
 export default {
-  props: ["username", "coin"]
+  props: ["username", "coin"],
+  methods: {
+    logout: function() {
+      localStorage.clear();
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 <style>

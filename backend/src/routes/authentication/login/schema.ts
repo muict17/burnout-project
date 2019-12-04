@@ -15,8 +15,14 @@ export default {
     200: {
       type: "object",
       properties: {
+        username: {
+          type: "string"
+        },
         token: {
           type: "string"
+        },
+        balance: {
+          type: "number"
         }
       }
     },
