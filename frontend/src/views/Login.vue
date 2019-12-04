@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column">
+    <div class="column mobile">
       <logoComponent />
     </div>
     <div class="column">
@@ -75,6 +75,7 @@ export default {
         /* eslint-disable */
         const { data } = await loginService(this.username, this.password);
         localStorage.setItem("token", data.token);
+        this.$router.push("/home");
       } catch ({ response }) {
         if (response) {
           this.isError = true;
@@ -129,5 +130,10 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+@media only screen and (max-width: 600px) {
+  .mobile {
+    display: none;
+  }
 }
 </style>
