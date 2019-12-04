@@ -75,6 +75,8 @@ export default {
         /* eslint-disable */
         const { data } = await loginService(this.username, this.password);
         localStorage.setItem("token", data.token);
+        localStorage.setItem("balance", data.balance);
+        localStorage.setItem("username", data.username);
         this.$router.push("/home");
       } catch ({ response }) {
         if (response) {
