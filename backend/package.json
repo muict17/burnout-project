@@ -24,6 +24,7 @@
     "fastify-url-data": "^2.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.4",
+    "omise": "^0.5.8",
     "pino": "^5.13.6",
     "pino-pretty": "^3.3.0",
     "pump": "^3.0.0",
