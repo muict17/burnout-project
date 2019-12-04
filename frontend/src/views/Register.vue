@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column">
+    <div class="column mobile">
       <logoComponent />
     </div>
     <div class="column">
@@ -124,5 +124,11 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile {
+    display: none;
+  }
 }
 </style>
