@@ -11,13 +11,13 @@ export default {
   body: {
     type: "object",
     properties: {
-      userId: {
-        type: "string"
-      },
       amount: {
         type: "number"
+      },
+      tokenId: {
+        type: "string"
       }
     },
-    required: ["userId", "amount"]
+    required: ["amount", "tokenId"]
   }
 };
