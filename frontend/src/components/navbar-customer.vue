@@ -10,10 +10,7 @@
     <div id="my-navbar-menu" class="navbar-menu">
       <div class="navbar-start">
         <div class="navbar-item">
-          <router-link to="/">Movies</router-link>
-        </div>
-        <div class="navbar-item">
-          <router-link to="/">Payments</router-link>
+          <router-link to="/home">Movies</router-link>
         </div>
       </div>
       <div>
@@ -22,15 +19,22 @@
         </div>
       </div>
       <div class="navbar-end">
-        <div class="navbar-item">{{ username }} / {{ coin }} point</div>
-        <div class="navbar-item"><a href="#" @click="logout">Logout</a></div>
+        <div class="navbar-item">
+          <router-link to="/home">My Tickets</router-link>
+        </div>
+        <div class="navbar-item"><a @click="logout">Logout</a></div>
       </div>
     </div>
   </nav>
 </template>
 <script>
 export default {
-  props: ["username", "coin"],
+  data() {
+    return {
+      username: localStorage.getItem("username"),
+      coin: localStorage.getItem("balance")
+    };
+  },
   methods: {
     logout: function() {
       localStorage.clear();

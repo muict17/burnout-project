@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Home from "../views/Home.vue";
+import Seat from "../views/Seat.vue";
+import Ticket from "../views/Ticket.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -20,6 +22,16 @@ const routes = [
     path: "/home",
     name: "home",
     component: Home
+  },
+  {
+    path: "/:movieId/seat",
+    name: "seat",
+    component: Seat
+  },
+  {
+    path: "/ticket",
+    name: "ticket",
+    component: Ticket
   }
 ];
 
