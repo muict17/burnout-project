@@ -13,14 +13,9 @@
           <router-link to="/home">Movies</router-link>
         </div>
       </div>
-      <div>
-        <div class="navbar-item">
-          <p class="logo">MUICT TICKET</p>
-        </div>
-      </div>
       <div class="navbar-end">
         <div class="navbar-item">
-          <router-link to="/home">My Tickets</router-link>
+          <router-link to="/ticket">My Tickets</router-link>
         </div>
         <div class="navbar-item"><a @click="logout">Logout</a></div>
       </div>
