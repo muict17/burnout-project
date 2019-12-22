@@ -77,7 +77,12 @@ export default {
         localStorage.setItem("token", data.token);
         localStorage.setItem("balance", data.balance);
         localStorage.setItem("username", data.username);
-        this.$router.push("/home");
+        localStorage.setItem("role", data.role);
+        if (data.role === "user") {
+          this.$router.push({ name: "home" });
+        } else {
+          this.$router.push({ name: "admin-home" });
+        }
       } catch ({ response }) {
         if (response) {
           this.isError = true;

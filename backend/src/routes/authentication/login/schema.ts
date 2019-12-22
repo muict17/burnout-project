@@ -23,6 +23,9 @@ export default {
         },
         balance: {
           type: "number"
+        },
+        role: {
+          type: "string"
         }
       }
     },

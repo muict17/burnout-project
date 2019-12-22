@@ -1,13 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
-import Home from "../views/Home.vue";
-import Seat from "../views/Seat.vue";
-import Ticket from "../views/Ticket.vue";
+import Register from "../views/Customer/Register.vue";
+import Home from "../views/Customer/Home.vue";
+import Seat from "../views/Customer/Seat.vue";
+import Ticket from "../views/Customer/Ticket.vue";
+import HomeAdmin from "../views/Admin/Home.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/admin",
+    name: "admin-home",
+    component: HomeAdmin
+  },
   {
     path: "/",
     name: "login",

@@ -25,7 +25,8 @@ export default {
           res.send({
             token,
             balance: checkUserInfo.balance,
-            username: checkUserInfo.username
+            username: checkUserInfo.username,
+            role: checkUserInfo.role
           });
         }
         res.status(401).send({ msg: "password incorrect" });
