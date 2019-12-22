@@ -12,9 +12,9 @@
         <div class="navbar-item">
           <router-link to="/home">Movies</router-link>
         </div>
-      </div>
-      <div class="navbar-item">
-        <p class="logo">MUICT TICKET</p>
+        <div class="navbar-item">
+          <router-link to="/admin/scan">Scan Qrcode</router-link>
+        </div>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">

@@ -6,10 +6,16 @@ import Home from "../views/Customer/Home.vue";
 import Seat from "../views/Customer/Seat.vue";
 import Ticket from "../views/Customer/Ticket.vue";
 import HomeAdmin from "../views/Admin/Home.vue";
+import ScanQr from "../views/Admin/Scan.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/admin/scan",
+    name: "admin-scan",
+    component: ScanQr
+  },
   {
     path: "/admin",
     name: "admin-home",

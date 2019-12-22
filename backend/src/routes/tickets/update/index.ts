@@ -30,7 +30,7 @@ export default {
           isUsed: true
         });
       }
-      res.status(404).send({ msg: "ticket id not found" });
+      res.status(404).send({ msg: "ticket id not found or it was used" });
     } catch (e) {
       req.logger.error(e);
       req.status(500).send({ msg: "Service Unavailable" });
