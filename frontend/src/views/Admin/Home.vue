@@ -1,49 +1,79 @@
 <template>
   <div>
     <Navbar />
+<div class="container">
+   <h1 class="title has-text-centered">Create Movie</h1>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Movie Name</label>
+    </div>
+  
+  <div class="field-body">
+    <div class="field">
+      <p class="control is-narrow has-icons-left">
+        <input class="input" type="text" placeholder="Movie name" v-model="movieName">
+        <span class="icon is-small is-left">
+         <i class="fas fa-video"></i>
+          <ion-icon name="videocam"></ion-icon>
+        </span>
+      </p>
+    </div>
+   
+    </div>
+  </div>
+
+ <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Movie Price</label>
+    </div>
+  
+  <div class="field-body">
+    <div class="field">
+      <p class="control is-narrow has-icons-left">
+        <input class="input" type="number" placeholder="Movie Price" v-model="moviePrice">
+        <span class="icon is-small is-left">
+        <i class="fas fa-dollar-sign"></i>
+          <ion-icon name="videocam"></ion-icon>
+        </span>
+      </p>
+    </div>
+   
+  </div>
+</div>
+
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label">Movie Image</label>
+    </div>
+  
+  <div class="field-body">
+    <div class="field">
+      <p class="control is-narrow ">
+        <input class="input" type="file" @change="onFileSelected" accept="image/*">
+      </p>
+    </div>
+  </div>
+</div>
+  <div class="field is-horizontal is-center">
+    <div class="field-label">
+    <!-- Left empty for spacing -->
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="control">
+        <button @click="addMovie" class="button is-info">Create the Movie</button>
+      </div>
+    </div>
+  </div>
+      
+  </div>
+
+</div>
+
+
+
 
     <div class="container">
-      <div class="column is-half">
-        <h1 class="title has-text-centered">Create Movie</h1>
-        <div class="field is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Movie Name</label>
-          </div>
-          <div class="field-body">
-            <div class="field">
-              <p class="control">
-                <input type="text" v-model="movieName" />
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="field is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Movie Price</label>
-          </div>
-          <div class="field-body">
-            <div class="field">
-              <p class="control">
-                <input type="number" v-model="moviePrice" />
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="field is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Movie Image</label>
-          </div>
-          <div class="field-body">
-            <div class="field">
-              <p class="control">
-                <input type="file" @change="onFileSelected" accept="image/*" />
-              </p>
-            </div>
-          </div>
-        </div>
-        <button @click="addMovie" class="button is-info">ADD</button>
-      </div>
 
       <h1 class="title has-text-centered">Movies List</h1>
       <table class="table is-fullwidth">
@@ -204,5 +234,6 @@ export default {
   font-size: 18px;
   margin: 0px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>
