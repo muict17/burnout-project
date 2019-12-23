@@ -16,8 +16,6 @@ export default {
         image,
         price,
         seatsBooking: [],
-        startDate: new Date(startDate),
-        endDate: new Date(endDate),
         createAt: new Date(),
         updateAt: new Date()
       });

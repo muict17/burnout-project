@@ -31,16 +31,8 @@ export default {
       },
       price: {
         type: "number"
-      },
-      startDate: {
-        type: "string",
-        format: "date"
-      },
-      endDate: {
-        type: "string",
-        format: "date"
       }
     },
-    required: ["movieName", "image", "price", "startDate", "endDate"]
+    required: ["movieName", "image", "price"]
   }
 };

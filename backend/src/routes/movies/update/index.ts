@@ -9,7 +9,7 @@ export default {
     done();
   },
   handler: async (req, res) => {
-    const { movieName, image, price, startDate, endDate } = req.body;
+    const { movieName, image, price } = req.body;
     const result = await req.db.collection("movies").updateOne(
       { _id: req.mongoPrimaryKey(req.params.movieId) },
       {
@@ -17,8 +17,6 @@ export default {
           movieName,
           image,
           price,
-          startDate: new Date(startDate),
-          endDate: new Date(endDate),
           updateAt: new Date()
         }
       }
