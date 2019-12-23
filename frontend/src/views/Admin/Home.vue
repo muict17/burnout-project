@@ -94,7 +94,7 @@
           <th>Edit Movie</th>
         </tr>
         <tr v-for="(element, index) in listOfMovie" :key="index">
-          <td><img class="image" :src="element.image" /></td>
+          <td><img class="image" :src="element.image[0]" /></td>
           <td>{{ element.movieName }}</td>
           <td>{{ element.price }}</td>
           <td>
@@ -180,7 +180,8 @@ export default {
       if (event.target.files && event.target.files[0]) {
         const file = event.target.files[0];
         const reader = new FileReader();
-        reader.onload = () => (this.listOfMovie[index].image = reader.result);
+        reader.onload = () =>
+          (this.listOfMovie[index].image[0] = reader.result);
         reader.readAsDataURL(file);
       }
     },
@@ -216,7 +217,7 @@ export default {
         await updateMovieService(movieId, {
           movieName,
           price,
-          image: [image]
+          image
         });
         this.$set(this.toggle, index, !this.toggle[index]);
       } catch (e) {
