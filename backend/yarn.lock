@@ -570,9 +570,9 @@ fastify-helmet@^3.0.2:
     referrer-policy "^1.1.0"
     x-xss-protection "^1.1.0"
 
-fastify-multipart@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/fastify-multipart/-/fastify-multipart-1.0.2.tgz#d6cbd4b7e4568e69ed6d75f2663bacdb94f7f9cc"
+fastify-multipart@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/fastify-multipart/-/fastify-multipart-1.0.5.tgz#bb6e39d4d20c09e0ac5ba676ab60c0b40947a671"
   dependencies:
     busboy "^0.3.0"
     deepmerge "^4.0.0"
